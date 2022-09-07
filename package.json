@@ -1,0 +1,21 @@
+{
+    "name": "meetup200922",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Amit Gazal",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^0.27.2",
+        "express": "^4.18.1",
+        "fastify": "^4.5.3",
+        "fastify-plugin": "^4.2.1",
+        "node-statsd": "^0.1.1",
+        "performance": "^1.4.0",
+        "response-time": "^2.3.2"
+    }
+}
