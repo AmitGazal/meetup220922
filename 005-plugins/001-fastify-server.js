@@ -1,8 +1,12 @@
 import fastify from 'fastify'
 import { controller as privateController } from './private-controller.js'
 import { controller as publicController } from './public-controller.js'
+import { loggingPlugin } from './001-loggingPlugin.js'
 
 const app = fastify({logger: true})
+
 app.register(privateController, {prefix: '/private'})
 app.register(publicController, {prefix: '/public'})
-await app.listen({port: 3001, host: '0.0.0.0'})
+app.register(loggingPlugin)
+
+await app.listen({port: 3000, host: '0.0.0.0'})

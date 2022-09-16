@@ -1,12 +1,12 @@
 import fastify from 'fastify'
+import { controller as privateController } from './private-controller.js'
+import { controller as publicController } from './public-controller.js'
 
 const app = fastify({logger: true})
-app.get('/', (req, res) => {
-    res.send({hello: 'world'})
-})
-app.get('/hook/', (req, res) => {
-    res.send({hello: 'world'})
-})
+
+app.register(privateController, {prefix: '/private'})
+app.register(publicController, {prefix: '/public'})
+
 app.addHook('onRequest', (request, reply, done) => {
     request.startTime = Date.now()
     done()
@@ -18,8 +18,5 @@ app.addHook('onResponse', (request, reply, done) => {
         'request-handled')
     done()
 })
-await app.listen({port: 3001, host: '0.0.0.0'})
 
-
-
-
+await app.listen({port: 3000, host: '0.0.0.0'})
